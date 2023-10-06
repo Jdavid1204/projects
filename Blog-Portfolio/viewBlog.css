@@ -1,0 +1,263 @@
+
+body{
+    font-family: 'Cormorant';
+    position: relative;
+    background-color: rgb(255, 253, 246);
+}
+
+.wrapper {
+    min-height: 100%;
+    margin: 1.5em 1em 0em 1em;
+}
+
+/* Navbar section */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0em 2em 0em 2em;
+ 
+}
+ 
+
+nav ul {
+    padding:0;
+    list-style: none;
+    display: flex;
+    gap: 1em;
+    margin:0;
+
+}
+
+.nav-right {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+} 
+
+
+
+.nav-contact{
+    color: white;
+    background-color: rgba(0, 0, 0, 0.497);
+    border-radius: .6em;
+    padding: 0.75em 1.5em;
+}
+
+header a {
+    text-decoration: none;
+    position: relative;
+    color: black;
+    font-size: 1.3rem;
+}
+
+
+nav ul li a.active::before{
+    position: absolute;
+    content: "";
+    width: 40%; /* width is 35% of text's width*/
+    height: 1px;
+    border-bottom: 2px solid black;
+    bottom:-4px;
+}
+nav ul li a:before{
+    position: absolute;
+    content: "";
+    width: 0%; /* width is 0% of text's width before hovering*/
+    height: 1px;
+    border-bottom: 2px solid rgb(255, 132, 0);
+    bottom:-4px;
+    transition: width .3s; 
+}
+
+#login:before{
+    position: absolute;
+    content: "";
+    width: 0%; /* width is 0% of text's width before hovering*/
+    height: 1px;
+    border-bottom: 2px solid rgb(255, 132, 0);
+    bottom:-4px;
+    transition: width .3s; 
+}
+
+#top-left-credit:before{
+    position: absolute;
+    content: "";
+    width: 0%; /* width is 0% of text's width before hovering*/
+    height: 1px;
+    border-bottom: 2px solid rgb(255, 132, 0);
+    bottom:-4px;
+    transition: width .3s; 
+}
+/*Top page welcome and image*/
+.form-container-blog {
+    margin: 3.5em 8em;
+    display: flex;
+    flex-direction: column;
+}
+
+.hgroup{
+    position: relative;
+    display:flex ;
+    justify-content: center;
+    gap:2em;
+}
+
+.hgroup h1 {
+    font-size: 8rem
+}
+.welcome {
+    font-family:'DM Serif Display', serif;
+    color: brown;
+    font-size: 1.3rem;
+    position:absolute;
+    top: 300px;
+}
+
+section .hgroup .the{
+    font-family: 'Tiro Telugu', serif;
+    
+}
+
+section .hgroup .newsfeed {
+    font-family: 'DM Serif Display', serif;
+}
+
+
+figure {
+    text-align: center;
+
+}
+
+.office-image{
+    width: 90%;
+}
+
+.addpost-wrap {
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+.addpost {
+    text-decoration: none;
+    font-size: 1.3rem;
+    font-family: 'Cormorant';
+    padding: 1em 2.5em;
+    background-color: rgb(27, 27, 27);
+    color: white;
+    border-radius: 1em;
+}
+
+.addpost:hover{
+    background-color: #383848;
+}
+
+hr {
+    color: black;
+}
+/*Start of blog*/
+
+.blog-posts-container {
+    margin-top: 3em;
+    display: flex;
+    border-top: solid 1pt #383848;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.experience-container {
+    margin-top: 2.5em;
+}
+
+.experience-container.right .experience-content {
+    margin-left: auto;
+    margin-right: 10em;
+}
+
+.experience-content h1 {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.4rem;   
+    margin: 0;
+    margin-bottom: 3em;
+}
+
+.experience-content {
+    text-align: center;
+    background-color:rgb(253, 253, 237) ;
+    font-size: 1.1rem;
+    border-radius: 0.1em;
+    padding:  3em 5em;
+    margin-top: 1.5em;
+    max-width: 30em;
+    position: relative;
+}
+
+.footer-post {
+    margin-top: 3em;
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+.box3 {
+    position: absolute;
+    top:  100px;
+    right: -200px;
+    padding: 2em 7em;
+    background-color: rgb(228, 228, 199);
+}
+
+#commentForm {
+    margin-top: 2em;
+}
+
+#commentLabel {
+    font-family: fantasy;
+}
+
+.comments {
+    text-align: center;
+    border-bottom: solid 1pt black;
+}
+
+
+.comments-order {
+    border-bottom: solid 1pt black;
+    display: flex;
+    flex-direction: column;
+}
+
+#message {
+    color: brown;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/*Interactions*/
+
+/*hover is a pseudo class and before a pseudo element. Pseudo elements are after pseudo classes. */
+/*Increase width by 35% when hovering,but do this before the a element in he unorered list within the nav tag.*/
+nav ul li a:hover:before{
+    width: 35%;
+
+}
+
+#login:hover:before {
+    width: 35%;
+}
+
+#top-left-credit:hover:before {
+    width: 15%;
+}
+
+.nav-contact:hover {
+    background-color: rgb(255, 132, 0);
+}
+
+.submit:hover {
+    background-color:rgb(255, 251, 0);
+}
+
+.clear:hover {
+background-color: rgb(255, 30, 30);
+}

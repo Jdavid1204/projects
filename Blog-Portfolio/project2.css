@@ -1,0 +1,91 @@
+
+body{
+    background-color: white;
+}
+
+
+#header {
+    padding-top: 1em;
+}
+
+.images {
+    float:left;
+    position: relative;
+    margin-right: 3em;
+
+}
+
+article {
+    margin: 1em;
+    padding-left: 0.5em;
+    background-color: rgb(214, 207, 207);
+}
+
+.container{
+    clear:left;
+    overflow: auto;
+    margin-left: 20pt;
+    margin-right: 20pt;
+    margin-top: 25pt;
+    margin-bottom: 25pt;
+}
+
+.text {
+    padding-left: 10em;
+}
+
+figcaption {
+    background-color: rgba(0, 0, 0, 0.472);
+    color: rgba(255, 255, 255, 0.755);
+    margin-top: 5pt;
+    position: absolute;
+    bottom: 3pt;
+    width: 200px;
+  }
+
+
+
+.section2 {
+    background-color: black;
+    color: white;
+    float: right;
+
+
+}
+  
+.section2 h2 {
+    color: white;
+}
+  
+.medals {
+    margin-bottom: 17pt;
+    position: absolute;
+    top:0px;
+    left:0px;
+}
+
+.bigMedal{
+    margin-bottom: 17pt;
+    position: absolute;
+    top:-10px;
+    left:-10px;
+}
+  
+footer {
+    background-color: black;
+    color: white;
+}
+  
+  
+#link {
+    display:block;
+    background-color: rgb(109, 231, 109);
+    color: white;
+}
+  
+hr {
+    border: solid green 1pt;
+    margin:0;
+    padding:0;
+}
+

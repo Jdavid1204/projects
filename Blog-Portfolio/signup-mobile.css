@@ -1,0 +1,16 @@
+@media (max-width:768px) {
+    body{
+        margin:0;
+        background-color: red;
+    }
+
+    header {
+        margin: 0;
+        gap:0.5em;
+    }
+    header a {
+        font-size: 1.1rem;
+    }
+
+
+}

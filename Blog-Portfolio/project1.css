@@ -1,0 +1,253 @@
+ body {
+    display: grid;
+    grid-template-areas:
+        'header header header header header'
+        'research main main main hobbies'
+        'links main main main movies'
+        'skills education education education movies'
+        'footer . . . . ';
+    grid-template-columns:auto auto auto auto 14em;
+    grid-template-rows: auto auto auto auto auto;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    background-color: white;
+}
+
+header {
+    grid-area: header;
+    display: flex;
+    justify-content: space-between;
+    background-color: green;
+    height: 4.5rem;
+    font-size: 2rem;
+    align-items: center;
+}
+
+
+.navbar ul li a{
+    color: white;
+    margin-right: 0.625em;
+}
+
+.research {
+    grid-area: research;
+    background-color: white;
+    background-color: rgb(250, 213, 192);
+    padding: 0.3125em;
+    color: brown;
+    text-align: justify;
+
+}
+
+
+
+.research ul li {
+    padding-top: 0.1875em;
+}
+
+
+.navbar li {
+    display: inline;
+}
+
+.links {
+    grid-area: links;
+    background-color: rgb(199, 195, 195);
+    padding: 0.3125em;
+    height:fit-content;
+
+}
+
+.links nav ul li {
+    margin-top: 0.3125em;
+}
+
+.links ul li a {
+    color: green;
+
+}
+
+
+
+.skills {
+    grid-area: skills;
+    background-color: rgb(199, 195, 195);
+    padding: 0.3125em;
+
+
+}
+
+
+.skill-list {
+    background-color: white;
+    padding: 0.625em;
+    margin: 0px;
+}
+
+.skill-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+
+
+.main {
+    grid-area: main;
+    background-color: white;
+    padding: 0.9375em;
+
+}
+
+
+
+.education {
+    grid-area: education;
+    background-color: white;
+    padding: 0.3125em;
+
+}
+
+.education ul li {
+    display: block;
+}
+
+.hobbies {
+    grid-area: hobbies;
+    background-color: rgb(199, 195, 195);
+    height: 6.5625em;
+    padding: 0.3125em;
+
+}
+
+.hobbies ul {
+    background-color: white;
+    padding : 0.625em;
+    margin: 0;
+}
+
+.hobbies h1 {
+    background-color: green;
+    text-align: center;
+    padding: 0.3125em;
+}
+.movies {
+    grid-area: movies;
+    background-color: rgb(199, 195, 195);
+    padding: 0.3125em;
+    height: 8.4375em;
+
+}
+
+.movies ul {
+    background-color: white;
+    padding : 0.625em;
+}
+
+.movies h1 {
+    background-color: green;
+    text-align: center;
+    padding: 0.3125em;
+}
+
+footer {
+    grid-area: footer;
+    background-color: green;
+    color: white;
+    text-align: center;
+    height: 1.25em;
+}
+
+ul, li {
+    list-style: none;
+    font-family: monospace;
+}
+
+a {
+    text-decoration: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+
+h1 {
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+}
+
+p {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+/*Top Menu section grid*/
+.name {
+    grid-area: name;
+    margin-left: 0.625em;
+}
+.name a {
+    color: white;
+}
+
+.top-links {
+    grid-area: link;
+
+}
+
+
+
+/* Top right menu section flexbox */
+.navbar {
+    display: flex;
+}
+
+
+.link1 {
+    flex: 35%;
+}
+
+.link2 {
+    flex: 35%;
+}
+
+.link3 {
+    flex: 30%;
+}
+
+/* Main conent in middle of page */
+.flexbox-main {
+    display: flex;
+
+}
+
+.main-content {
+    flex: 20%;
+
+}
+
+.main-img {
+    flex: 80%;
+    max-height: none;
+    object-fit: cover;
+}
+
+.title-aside {
+    text-align: center;
+    background-color:rgb(36, 199, 139);
+}
+
+
+
+/*Education section*/
+
+#secondary {
+    margin: 0.625em 0px 0.625em 0px;
+
+}
+
+#sixth {
+    margin: 0.625em 0px 0.625em;
+}
+
+.year {
+    margin-bottom: 0.3125em;
+}

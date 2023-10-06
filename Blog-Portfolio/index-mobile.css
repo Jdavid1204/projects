@@ -1,0 +1,43 @@
+@media (max-width: 768px) {
+    body{
+        margin:0;
+    }
+
+    header {
+        margin: 0;
+        gap:0.5em;
+    }
+    header a {
+        font-size: 1.1rem;
+    }
+
+    .intro-content-wrapper{
+        align-items: center;
+    }
+    
+    .intro-content-wrapper span {
+        font-size: 1.2rem;
+    }
+
+    .heading1 a{
+        font-size: 8rem;    
+    }
+
+    .heading2 a{
+        font-size: 8.8rem;
+    }
+
+    .main-image {
+        max-height: 33em;
+        width: 24.76em;
+        left: -50px;
+        bottom:-150px;
+    
+    
+    }
+
+    .version a {
+        font-size: 1.3rem;
+    }
+    
+}

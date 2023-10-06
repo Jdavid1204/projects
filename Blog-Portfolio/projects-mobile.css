@@ -1,0 +1,50 @@
+@media (max-width: 768px) {
+    body{
+        margin:0;
+    }
+
+    header {
+        margin: 0;
+        gap:0.5em;
+    }
+    header a {
+        font-size: 1.1rem;
+    }
+
+
+
+    /*Section*/
+
+    section h1{
+        font-size:1.5rem ;
+    }
+    .flexbox-container {
+        min-height: 50em;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .project1 {
+        width:75%;
+        background-image: url(images/Screenshot\ 2023-03-21\ at\ 05.01.53.png);
+        background-size: 100%;
+        border-radius: 1em;
+        height: 80%;
+    }
+    .project2
+     {
+        background-image: url(images/Screenshot\ 2023-03-21\ at\ 05.03.57.png);
+        width:75%;
+        background-size: 100%;
+        border-radius: 1em;
+        height: 80%;
+    }
+
+    .skills h1 {
+        text-align: center;
+        margin-bottom: 1em;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 1.5rem;
+    }
+}

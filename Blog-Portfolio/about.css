@@ -1,0 +1,301 @@
+body{
+    font-family: 'Cormorant';
+    position: relative;
+    background-color: rgb(255, 255, 246);
+}
+
+ /*Main wrapper adjustments*/
+.wrapper {
+    min-height: 100%;
+    margin: 1.5em 1em 0em 1em;
+}
+
+
+
+/* Navbar section */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0em 2em 0em 2em;
+ 
+}
+ 
+
+nav ul {
+    padding:0;
+    list-style: none;
+    display: flex;
+    gap: 1em;
+    margin:0;
+
+}
+
+.nav-right {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+} 
+
+
+
+.nav-contact{
+    color: white;
+    background-color: rgba(0, 0, 0, 0.497);
+    border-radius: .6em;
+    padding: 0.75em 1.5em;
+}
+
+header a {
+    text-decoration: none;
+    position: relative;
+    color: black;
+    font-size: 1.3rem;
+}
+
+
+nav ul li a.active::before{
+    position: absolute;
+    content: "";
+    width: 40%; /* width is 35% of text's width*/
+    height: 1px;
+    border-bottom: 2px solid black;
+    bottom:-4px;
+}
+nav ul li a:before{
+    position: absolute;
+    content: "";
+    width: 0%; /* width is 0% of text's width before hovering*/
+    height: 1px;
+    border-bottom: 2px solid rgb(255, 132, 0);
+    bottom:-4px;
+    transition: width .3s; 
+}
+
+#login:before{
+    position: absolute;
+    content: "";
+    width: 0%; /* width is 0% of text's width before hovering*/
+    height: 1px;
+    border-bottom: 2px solid rgb(255, 132, 0);
+    bottom:-4px;
+    transition: width .3s; 
+}
+
+#top-left-credit:before{
+    position: absolute;
+    content: "";
+    width: 0%; /* width is 0% of text's width before hovering*/
+    height: 1px;
+    border-bottom: 2px solid rgb(255, 132, 0);
+    bottom:-4px;
+    transition: width .3s; 
+}
+
+
+/*Top content of about me page*/
+.about-section-wrapper {
+    margin: 5em 13em;
+    min-height: 100%;
+}
+
+ .top-container {
+    display: flex;
+    min-height: 30em;
+    gap:8em;
+    justify-content: center;
+
+ }
+
+ .left-column{
+    width: fit-content
+ }
+
+ article ul li a {
+    text-decoration: none;
+    color: black;
+ }
+
+ article ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.5rem;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+ }
+
+
+ article h1 {
+    font-size: 7rem;
+    font-family: 'Acme', sans-serif;
+
+ }
+
+
+.right-column {
+    width: 40%;
+    border-radius: 1em;
+}
+
+.top-container h1 {
+    margin:0;
+    padding:0;
+}
+
+.top-container img {
+    height: 37em;
+}
+
+
+.relevant-links{
+    align-items: center;
+    margin-top: 4em;
+}
+
+.relevant-links ul li a {
+    font-family: 'Acme', sans-serif;
+}
+
+.resume {
+    color:rgb(255, 132, 0);
+}
+
+/*About me text*/
+
+.aboutme-container {
+    margin-top: 2.5em;
+
+}
+
+.aboutme-container h1 {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2rem;
+}
+
+.about-me {
+    background-color:rgb(253, 253, 237) ;
+    font-size: 1.2rem;
+    font-family: 'Tiro Telugu', serif;
+    border-radius: 0.1em;
+    padding:  4em 5em;
+    margin-top: 1.5em;
+    max-width: 30em;
+    position: relative;
+}
+
+.box {
+    position: absolute;
+    top:  100px;
+    right: -250px;
+    font-size: 1.1rem;
+    padding: 3em 8em;
+    background-color: rgb(228, 228, 199);
+}
+
+.education-container h1 {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2rem;
+}
+
+
+.education-container {
+    margin-top: 2.5em;
+}
+
+
+.education-content {
+    background-color:rgb(253, 253, 237) ;
+    font-size: 1.1rem;
+    border-radius: 0.1em;
+    padding:  4em 5em;
+    margin-top: 1.5em;
+    max-width: 30em;
+    position: relative;
+
+}
+
+.box2 {
+    position: absolute;
+    top:  75px;
+    right: -200px;
+    padding: 2em 7em;
+    background-color: rgb(228, 228, 199);
+}
+
+.experience-container {
+    margin-top: 2.5em;
+}
+
+.experience-container h1 {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2rem;
+}
+
+.experience-content {
+    background-color:rgb(253, 253, 237) ;
+    font-size: 1.1rem;
+    border-radius: 0.1em;
+    padding:  4em 5em;
+    margin-top: 1.5em;
+    max-width: 30em;
+    position: relative;
+
+}
+
+.box3 {
+    position: absolute;
+    top:  100px;
+    right: -200px;
+    padding: 2em 7em;
+    background-color: rgb(228, 228, 199);
+}
+
+
+footer {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+footer ul {
+    z-index: 100;
+    margin-top: 10em;
+    padding: 0;
+    list-style: none;
+    align-items: center;
+    display: flex;
+    gap: 4em;
+
+}
+
+
+footer a {
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: rgb(0, 0, 0);
+}
+
+
+/*Interactions*/
+
+/*hover is a pseudo class and before a pseudo element. Pseudo elements are after pseudo classes. */
+/*Increase width by 35% when hovering,but do this before the a element in he unorered list within the nav tag.*/
+nav ul li a:hover:before{
+    width: 35%;
+
+}
+
+#login:hover:before {
+    width: 35%;
+}
+
+#top-left-credit:hover:before {
+    width: 15%;
+}
+
+.nav-contact:hover {
+    background-color: rgb(255, 132, 0);
+}

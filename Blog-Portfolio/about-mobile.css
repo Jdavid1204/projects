@@ -1,0 +1,102 @@
+
+@media (max-width: 768px) {
+    
+
+    body{
+        margin:0;
+    }
+
+    header {
+        margin: 0;
+    }
+
+    header a {
+        font-size: 1.1rem;
+    }
+    
+
+   .top-container {
+    display: flex;
+    flex-direction: column;
+    gap:0;
+    width: 100%;
+    max-width: 450px;
+    justify-content: center;
+   }
+
+   .left-column{
+    align-self: center;
+   }
+   .relevant-links ul{
+    padding: 0;
+    }
+
+    hgroup {
+        text-align: center;
+    }
+
+    .relevant-links{
+        margin-top:2em;
+    }
+
+    article ul {
+        gap: 2em;
+    }
+    .about-section-wrapper {
+        margin: 3em 7em;
+    }
+
+   .right-column{
+    min-width: 100%;
+    max-height: 36em;
+   }
+
+   article h1 {
+    font-size: 3rem;
+   }
+   /*About me text*/
+
+    .aboutme-container{
+        margin-top: 4em;
+    }
+
+   .about-me {
+    font-size:1rem;
+    padding:  4em 4em;
+   }
+
+   .box {
+    padding: 2em 3.5em;
+    top:  200px;
+    right: -100px;
+
+   }
+
+   .education-content {
+    font-size: 1rem;
+    padding:  3em 3.5em;
+    margin-top: 1.5em;
+
+    }
+
+    .box2 {
+        top:  75px;
+        right: -100px;
+        padding: 2em 4em;
+    }
+
+    .experience-content {
+        font-size: 1rem;
+        padding:  4em 5em;
+    
+    }
+    
+    .box3 {
+        position: absolute;
+        top:  120px;
+        right: -80px;
+        padding: 2em 4em;
+    }
+   
+
+}

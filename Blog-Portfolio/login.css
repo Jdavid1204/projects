@@ -1,0 +1,248 @@
+/*Change colour of background and font family of letters */
+body {
+    background-color: rgb(255, 255, 246);
+    font-family: 'Cormorant';
+    position: relative;
+    margin:0;
+
+}
+
+.wrapper {
+    min-height: 100%;
+    margin: 1.5em 1em 0em 1em;
+}
+
+/* Navbar section */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0em 2em 0em 2em;
+ 
+}
+ 
+
+nav ul {
+    padding:0;
+    list-style: none;
+    display: flex;
+    gap: 1em;
+    margin:0;
+
+}
+
+.nav-right {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+} 
+
+
+
+.nav-contact{
+    color: white;
+    background-color: rgba(0, 0, 0, 0.497);
+    border-radius: .6em;
+    padding: 0.75em 1.5em;
+}
+
+header a {
+    text-decoration: none;
+    position: relative;
+    color: black;
+    font-size: 1.3rem;
+}
+
+
+nav ul li a.active::before{
+    position: absolute;
+    content: "";
+    width: 40%; /* width is 35% of text's width*/
+    height: 1px;
+    border-bottom: 2px solid black;
+    bottom:-4px;
+}
+nav ul li a:before{
+    position: absolute;
+    content: "";
+    width: 0%; /* width is 0% of text's width before hovering*/
+    height: 1px;
+    border-bottom: 2px solid rgb(255, 132, 0);
+    bottom:-4px;
+    transition: width .3s; 
+}
+
+#login:before{
+    position: absolute;
+    content: "";
+    width: 0%; /* width is 0% of text's width before hovering*/
+    height: 1px;
+    border-bottom: 2px solid rgb(255, 132, 0);
+    bottom:-4px;
+    transition: width .3s; 
+}
+
+#top-left-credit:before{
+    position: absolute;
+    content: "";
+    width: 0%; /* width is 0% of text's width before hovering*/
+    height: 1px;
+    border-bottom: 2px solid rgb(255, 132, 0);
+    bottom:-4px;
+    transition: width .3s; 
+}
+
+
+
+/*Interactions*/
+
+/*hover is a pseudo class and before a pseudo element. Pseudo elements are after pseudo classes. */
+/*Increase width by 35% when hovering,but do this before the a element in he unorered list within the nav tag.*/
+nav ul li a:hover:before{
+    width: 35%;
+
+}
+
+#login:hover:before {
+    width: 35%;
+}
+
+#top-left-credit:hover:before {
+    width: 15%;
+}
+
+.nav-contact:hover {
+    background-color: rgb(255, 132, 0);
+}
+
+/*Form */
+
+main {
+    display: flex;
+    justify-content: center;
+    margin-top: 5em;
+    
+}
+
+form {
+    background-color: white;
+    margin: 2em 2em 0em 2em;
+    width: fit-content;
+}
+
+form h1 {
+    font-family: 'Cormorant';
+    text-align: center;
+}
+
+input {
+    margin-top:.6em;
+    min-width: 40em;
+    min-height: 4em;
+    border: solid 1pt;
+    border-color: rgb(255, 132, 0);
+    border-radius: .4em ;
+
+}
+
+
+fieldset {
+    padding: 1.5em;
+}
+
+.fields {
+    margin: 1.5em 0 1.5em 0;
+}
+
+.password {
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+}
+#password-requirement{
+    margin-top: .5em;
+}
+
+
+#error {
+    font-family:Arial, Helvetica, sans-serif;
+    color: red;
+    text-align: center;
+}
+
+/* First section of form*/
+
+ 
+fieldset {
+    font-size: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    border: solid 1pt;
+    border-radius: .6em;
+    border-color:rgb(250, 225, 5);
+}
+
+.forgot-password {
+    text-decoration: none;
+    text-align: center;
+    font-size: 1.3rem;
+    color: black;
+}
+
+.forgot-password:hover {
+    color:rgb(255, 132, 0)
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+footer ul {
+    z-index: 100;
+    margin-top: 3em;
+    padding: 0;
+    list-style: none;
+    align-items: center;
+    display: flex;
+    gap: 4em;
+
+}
+
+footer ul li img {
+    margin: 0;
+    padding: 0;
+    width:3em;
+    height: 2em;
+}
+
+footer a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: rgb(69, 104, 135);
+
+}
+
+/* Buttons at the bottom sections */
+
+
+.button-container {
+    text-align: center;
+}
+
+
+button {
+    background-color: rgb(250, 225, 5);
+    border: solid 1pt rgb(250, 225, 5);
+    border-radius: .6em;
+    font-size: 1rem;
+    height: 4em;
+    width: 20em;
+    margin: 10pt;
+
+}
+
+button:hover {
+    background-color:rgb(255, 187, 0);
+}
+

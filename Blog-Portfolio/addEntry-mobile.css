@@ -1,0 +1,74 @@
+@media (max-width:768px) {
+    body{
+        margin:0;
+    }
+
+    header {
+        margin: 0;
+        gap:0.5em;
+    }
+    header a {
+        font-size: 1.1rem;
+    }
+
+    section {
+        height: 100vh;
+    }
+    /*Page container(form and title)*/
+    .form-container-blog {
+        margin: 0em 0em;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    /*Title*/
+    .hgroup{
+        gap:2em;
+    }
+    
+    .hgroup h1 {
+        font-size: 5rem
+    }
+
+    .welcome {
+        top:400px;
+    }
+
+    figure {
+        align-content: center;
+    }
+    .office-image{
+        width: 100%;
+    }
+
+    
+
+    /*Form*/
+
+    main {
+        margin: 0;
+    }
+    form {
+        margin: 2em 2em 0em 2em;
+        width: fit-content;
+    }
+
+    fieldset {
+        width: fit-content;
+    }
+
+    #content {
+        min-width: 100%;
+    }
+
+    input {
+        margin-top:.6em;
+        min-width: 100%;
+    
+    }
+
+    footer ul{
+        border-top: solid 1pt black;
+        margin-top:7em;
+    }
+}
