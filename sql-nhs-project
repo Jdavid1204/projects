@@ -1,0 +1,223 @@
+CREATE TABLE department (
+    dept_id NUMBER(10) PRIMARY KEY,
+    hospital VARCHAR2(50),
+    specialty VARCHAR2(255)
+);
+
+CREATE TABLE person (
+    person_id NUMBER(10) PRIMARY KEY,
+    first_name VARCHAR2(50) NOT NULL,
+    last_name VARCHAR2(50) NOT NULL,
+    dob DATE,
+    age NUMBER(3) CHECK (age > 0),
+    gender VARCHAR2(6) CHECK (gender IN ('male', 'female', 'other')),
+    NI VARCHAR2(9) UNIQUE,
+    person_address VARCHAR2(100),
+    phone_number NUMBER(15) UNIQUE,
+    email VARCHAR2(255) UNIQUE,
+
+    CHECK (phone_number IS NOT NULL OR email IS NOT NULL)
+);
+
+CREATE TABLE patient (
+    MRN NUMBER(11) PRIMARY KEY,
+    person_id NUMBER(10) NOT NULL UNIQUE,
+    employment_status VARCHAR2(20),
+
+    FOREIGN KEY (person_id) REFERENCES person(person_id) ON DELETE CASCADE
+);
+
+CREATE TABLE clinician ( 
+    clinician_id NUMBER(10) PRIMARY KEY,
+    person_id NUMBER(10) NOT NULL UNIQUE,
+    specialty VARCHAR2(50) NOT NULL, 
+    clinician_grade NUMBER(1) NOT NULL,
+    security_level NUMBER(1) NOT NULL,
+    dept_id NUMBER(10),
+
+    FOREIGN KEY (person_id) REFERENCES person(person_id) ON DELETE CASCADE,
+    -- Delete department, clinician is not assigned to any department and can be reassigned one
+    FOREIGN KEY (dept_id) REFERENCES department ON DELETE SET NULL
+);  
+
+CREATE TABLE theatre (
+    theatre_id NUMBER(10) PRIMARY KEY,
+    dept_id NUMBER(10),
+
+    -- Delete department, delete its theatres
+    FOREIGN KEY (dept_id) REFERENCES department(dept_id) ON DELETE CASCADE
+);
+
+CREATE TABLE cases( 
+    case_id NUMBER(10) PRIMARY KEY, 
+    dept_id NUMBER(10),
+    clinician_id NUMBER(10),
+    current_status VARCHAR2(20), 
+    MRN NUMBER(11) NOT NULL,
+
+    -- Delete department, case is not assigned to any department and can be reassigned
+    FOREIGN KEY (dept_id) REFERENCES department(dept_id) ON DELETE SET NULL,
+    -- Delete clinician, case is not assigned to any clinician and can be reassigned
+    FOREIGN KEY (clinician_id) REFERENCES clinician(clinician_id) ON DELETE SET NULL,
+    -- Delete patient, delete the cases assigned to him
+    FOREIGN KEY (MRN) REFERENCES patient(MRN) ON DELETE CASCADE
+); 
+
+CREATE TABLE operation (
+    operation_id NUMBER(10) PRIMARY KEY,
+    operation_type VARCHAR2(255),
+    case_id NUMBER(10) NOT NULL,
+    operation_priority NUMBER(1) NOT NULL,
+    operation_status VARCHAR2(20),
+    theatre_id NUMBER(10),
+    date_of_schedule DATE NOT NULL,
+    scheduled_date DATE,
+
+    -- Delete case, delete operations assigned to it
+    FOREIGN KEY (case_id) REFERENCES cases(case_id) ON DELETE CASCADE,
+    -- Delete theatre, operation is not assigned to any theatre and can be reassigned one
+    FOREIGN KEY (theatre_id) REFERENCES theatre(theatre_id) ON DELETE SET NULL
+);
+
+CREATE TABLE waiting_list (
+    start_time TIMESTAMP NOT NULL,
+    end_time TIMESTAMP,
+    MRN NUMBER(11),
+    case_id NUMBER(10) NOT NULL,
+
+    CHECK (start_time < end_time),
+
+    -- Can't delete patient if still in waiting list
+    FOREIGN KEY (MRN) REFERENCES patient(MRN),
+    -- Delete case, delete its waiting list
+    FOREIGN KEY (case_id) REFERENCES cases(case_id) ON DELETE CASCADE
+);
+
+CREATE TABLE clinicians_performing_operation (
+    clinician_id NUMBER(10),
+    operation_id NUMBER(10),
+
+    PRIMARY KEY (clinician_id, operation_id),
+    -- Delete clinician, delete operations assigned to him
+    FOREIGN KEY (clinician_id) REFERENCES clinician(clinician_id) ON DELETE CASCADE,
+    -- Delete operation, delete list of clinicians assigned to it
+    FOREIGN KEY (operation_id) REFERENCES  operation(operation_id) ON DELETE CASCADE
+);
+
+-- Insert for department table
+INSERT INTO department VALUES (1, 'General Hospital', 'Cardiology');
+INSERT INTO department VALUES (2, 'City Hospital', 'Neurology');
+INSERT INTO department VALUES (3, 'Regional Medical Center', 'Orthopedics');
+INSERT INTO department VALUES (4, 'Community Hospital', 'Pediatrics');
+INSERT INTO department VALUES (5, 'General Hospital', 'Rheumatology');
+INSERT INTO department VALUES (6, 'City Hospital', 'Dermatology');
+INSERT INTO department VALUES (7, 'City Hospital', 'Gastroenterology');
+INSERT INTO department VALUES (8, 'Community Hospital', 'Urology');
+INSERT INTO department VALUES (9, 'General Hospital', 'Endocrinology');
+INSERT INTO department VALUES (10, 'City Hospital', 'Oncology');
+
+-- Insert for person table
+INSERT INTO person VALUES (1, 'Michelle', 'Moon', TO_DATE('2019-12-12', 'YYYY-MM-DD'), 4, 'female', 'MYW216345', '27666 Wallace Orchard Suite 579, Kylebury, TX 39027', 588009000035021, 'dustinpierce@hernandez.com');
+INSERT INTO person VALUES (2, 'David', 'Ramos', TO_DATE('2020-01-16', 'YYYY-MM-DD'), 3, 'male', 'HZY446342', '604 Adriana Light, North Michele, MO 01919', 813257430659169, 'udavis@carrillo-compton.com');
+INSERT INTO person VALUES (3, 'Amber', 'Hughes', TO_DATE('1995-10-10', 'YYYY-MM-DD'), 28, 'male', 'AML671301', 'Unit 4086 Box 7807, DPO AA 03780', 418519573508156, 'thomasdaniel@henson.com');
+INSERT INTO person VALUES (4, 'Julian', 'Lamb', TO_DATE('1941-02-22', 'YYYY-MM-DD'), 82, 'female', 'QTF042581', '6859 Sarah Hollow Apt. 377, South Joshuastad, SC 33260', 328494887438568, 'aguilarrussell@gmail.com');
+INSERT INTO person VALUES (5, 'Tammy', 'Wilson', TO_DATE('1925-06-11', 'YYYY-MM-DD'), 98, 'male', 'RMO940863', '409 Lucas Village, Yangshire, WV 72940', 226759695737549, 'garciagerald@hotmail.com');
+INSERT INTO person VALUES (6, 'Michael', 'Choi', TO_DATE('1933-07-11', 'YYYY-MM-DD'), 90, 'other', 'BNQ991455', '5857 Charles Hills, Bradfordberg, NV 27092', 482725813911677, 'jonathanwright@gmail.com');
+INSERT INTO person VALUES (7, 'Timothy', 'Bell', TO_DATE('1961-11-20', 'YYYY-MM-DD'), 62, 'male', 'MSN084010', '974 Connie Bridge, North Elizabethchester, AR 61983', 282621818651471, 'keithwright@anderson.biz');
+INSERT INTO person VALUES (8, 'John', 'Jackson', TO_DATE('1949-05-31', 'YYYY-MM-DD'), 74, 'male', 'NRB900201', '0847 Gwendolyn Rapids Apt. 720, Shannonmouth, NH 11801', 943957236727218, 'kennethhess@lopez.com');
+INSERT INTO person VALUES (9, 'Jon', 'Allison', TO_DATE('1908-02-17', 'YYYY-MM-DD'), 115, 'female', 'KSJ976917', '871 Aaron Fords Suite 631, Stephaniemouth, AL 69811', 811778573208240, 'nbenson@reyes.com');
+INSERT INTO person VALUES (10, 'Darin', 'Casey', TO_DATE('1953-03-15', 'YYYY-MM-DD'), 70, 'female', 'OWD144098', '97725 Jones Loaf Suite 202, Charleston, DC 46737', 144871579196139, 'donald09@woodward-conley.com');
+INSERT INTO person VALUES (11, 'Alan', 'Maldonado', TO_DATE('1990-08-14', 'YYYY-MM-DD'), 33, 'female', 'INT353960', '704 Gabriel Grove Suite 004, Franktown, IL 91062', 464030358377444, 'kathryn35@ballard-richardson.com');
+INSERT INTO person VALUES (12, 'Julie', 'Miller', TO_DATE('1993-12-05', 'YYYY-MM-DD'), 30, 'other', 'DGI287235', '9506 Smith Landing Apt. 448, South Douglasshire, VT 16114', 730893543324968, 'joshua69@gmail.com');
+INSERT INTO person VALUES (13, 'Victor', 'Moran', TO_DATE('2007-03-20', 'YYYY-MM-DD'), 16, 'male', 'DOO417181', '581 Larry Passage Suite 703, New Stephenview, MD 55150', 785136804929549, 'roseshort@yahoo.com');
+INSERT INTO person VALUES (14, 'Joshua', 'Long', TO_DATE('2004-01-26', 'YYYY-MM-DD'), 19, 'other', 'RDX319972', '4753 Matthew Creek Suite 194, South Marissamouth, SD 85518', 743775792460457, 'hholmes@bell.com');
+INSERT INTO person VALUES (15, 'Scott', 'Holmes', TO_DATE('2015-07-11', 'YYYY-MM-DD'), 8, 'male', 'SBD600398', '41861 Russell Mission Apt. 917, New Cynthia, WA 75786', 366507813600043, 'melodygonzalez@dawson.info');
+INSERT INTO person VALUES (16, 'Jessica', 'Kelly', TO_DATE('1968-01-25', 'YYYY-MM-DD'), 55, 'other', 'PMV093077', '646 Patrick Shore Apt. 496, Garystad, VA 19294', 127406526085165, 'todddominique@yahoo.com');
+INSERT INTO person VALUES (17, 'Robert', 'Wilcox', TO_DATE('1965-04-14', 'YYYY-MM-DD'), 58, 'male', 'EUM707862', '8969 Richardson Meadow, Ryanville, MO 67789', 121586628563746, 'katiebaker@campbell-johnson.com');
+INSERT INTO person VALUES (18, 'Mary', 'Watson', TO_DATE('1952-01-17', 'YYYY-MM-DD'), 71, 'female', 'MAL368250', '274 Angelica Trail Suite 736, Port Christina, VA 85302', 609305429030935, 'douglas23@howard.info');
+INSERT INTO person VALUES (19, 'Daryl', 'Gardner', TO_DATE('1953-06-30', 'YYYY-MM-DD'), 70, 'female', 'WIQ728291', '970 Cheyenne Station Suite 139, New Zachary, NV 96152', 152624374759838, 'carlsonronald@gmail.com');
+INSERT INTO person VALUES (20, 'Ian', 'Smith', TO_DATE('1997-03-25', 'YYYY-MM-DD'), 26, 'other', 'VVV624071', '478 Jennifer Grove, North Nichole, ME 95440', 708309618043530, 'asmith@stewart.biz');
+
+-- Insert for patient table
+INSERT INTO patient VALUES (210532933, 1, 'Unemployed');
+INSERT INTO patient VALUES (0733546358, 2, 'Unemployed');
+INSERT INTO patient VALUES (4489085, 7, 'Self-Employed');
+INSERT INTO patient VALUES (7800079975, 9, 'Employed');
+INSERT INTO patient VALUES (203775803, 10, 'Unemployed');
+INSERT INTO patient VALUES (2004722895, 13, 'Employed');
+INSERT INTO patient VALUES (3921676, 15, 'Student');
+INSERT INTO patient VALUES (9142819354, 16, 'Unemployed');
+INSERT INTO patient VALUES (206715287, 14, 'Employed');
+INSERT INTO patient VALUES (0164302656, 18, 'Student');
+
+-- Insert for clinician table
+INSERT INTO clinician VALUES (1, 3, 'Cardiology', 5, 3, 1);
+INSERT INTO clinician VALUES (2, 4, 'Neurology', 4, 2, 2);
+INSERT INTO clinician VALUES (3, 5, 'Orthopedics', 6, 4, 3);
+INSERT INTO clinician VALUES (4, 6, 'Pediatrics', 3, 3, 4);
+INSERT INTO clinician VALUES (5, 8, 'Oncology', 7, 5, 10);
+INSERT INTO clinician VALUES (6, 11, 'Cardiology', 2, 2, 6);
+INSERT INTO clinician VALUES (7, 12, 'Neurology', 5, 1, 7);
+INSERT INTO clinician VALUES (8, 17, 'Orthopedics', 8, 6, 3);
+INSERT INTO clinician VALUES (9, 19, 'Pediatrics', 9, 7, 9);
+INSERT INTO clinician VALUES (10, 20, 'Oncology', 7, 8, 10);
+
+-- Insert for theatre table
+INSERT INTO theatre VALUES (1, 9);
+INSERT INTO theatre VALUES (2, 8);
+INSERT INTO theatre VALUES (3, 5);
+INSERT INTO theatre VALUES (4, 10);
+INSERT INTO theatre VALUES (5, 3);
+INSERT INTO theatre VALUES (6, 7);
+INSERT INTO theatre VALUES (7, 3);
+INSERT INTO theatre VALUES (8, 8);
+INSERT INTO theatre VALUES (9, 9);
+INSERT INTO theatre VALUES (10, 2);
+
+-- Insert for cases table
+INSERT INTO cases VALUES (1, 10, 5, 'Open', 210532933);
+INSERT INTO cases VALUES (2, 3, 8, 'Pending', 0733546358);
+INSERT INTO cases VALUES (3, 10, 10, 'Closed', 4489085);
+INSERT INTO cases VALUES (4, 4, 4, 'Open', 7800079975);
+INSERT INTO cases VALUES (5, 5, 5, 'Pending', 203775803);
+INSERT INTO cases VALUES (6, 3, 3, 'Closed', 2004722895);
+INSERT INTO cases VALUES (7, 7, 7, 'Open', 3921676);
+INSERT INTO cases VALUES (8, 3, 8, 'Pending', 9142819354);
+INSERT INTO cases VALUES (9, 9, 9, 'Closed', 206715287);
+INSERT INTO cases VALUES (10, 1, 10, 'Open', 0164302656);
+
+-- Insert for operation table
+INSERT INTO operation VALUES (1, 'Heart Surgery', 1, 1, 'Scheduled', 1, DATE '2023-12-01', DATE '2023-12-01');
+INSERT INTO operation VALUES (2, 'Functional Knee Verifications', 6, 7, 'Scheduled', 2, DATE '2023-12-02', DATE '2023-12-02');
+INSERT INTO operation VALUES (3, 'Knee Replacement', 6, 7, 'Completed', 7, DATE '2023-12-03', DATE '2023-12-03');
+INSERT INTO operation VALUES (4, 'Hip Replacement', 4, 1, 'Completed', 4, DATE '2023-12-04', DATE '2023-12-04');
+INSERT INTO operation VALUES (5, 'Cataract Surgery', 5, 2, 'Completed', 6, DATE '2023-12-05', DATE '2023-12-05');
+INSERT INTO operation VALUES (6, 'Knee Tendon repair', 2, 3, 'Scheduled', 5, DATE '2023-12-06', DATE '2023-12-06');
+INSERT INTO operation VALUES (7, 'Knee Osteotomy', 8, 6, 'Scheduled', 7, DATE '2023-12-07', DATE '2023-12-07');
+INSERT INTO operation VALUES (8, 'Lumbar Spinal Fusion', 7, 2, 'Completed', 8, DATE '2023-12-08', DATE '2023-12-08');
+INSERT INTO operation VALUES (9, 'Breast Biopsy', 9, 3, 'Scheduled', 9, DATE '2023-12-09', DATE '2023-12-09');
+INSERT INTO operation VALUES (10, 'Tonsillectomy', 10, 1, 'Completed', 10, DATE '2023-12-10', DATE '2023-12-10');
+
+-- Insert for waiting_list table
+INSERT INTO waiting_list VALUES (TIMESTAMP '2023-01-01 08:00:00', TIMESTAMP '2023-01-01 12:00:00', 210532933, 1);
+INSERT INTO waiting_list VALUES (TIMESTAMP '2023-01-02 09:00:00', TIMESTAMP '2023-01-02 13:00:00', 0733546358, 2);
+INSERT INTO waiting_list VALUES (TIMESTAMP '2023-01-03 10:00:00', TIMESTAMP '2023-01-03 14:00:00', 4489085, 3);
+INSERT INTO waiting_list VALUES (TIMESTAMP '2023-01-04 11:00:00', TIMESTAMP '2023-01-04 15:00:00', 7800079975, 4);
+INSERT INTO waiting_list VALUES (TIMESTAMP '2023-01-05 12:00:00', TIMESTAMP '2023-01-05 16:00:00', 203775803, 5);
+INSERT INTO waiting_list VALUES (TIMESTAMP '2023-01-06 08:30:00', TIMESTAMP '2023-01-06 12:30:00', 2004722895, 6);
+INSERT INTO waiting_list VALUES (TIMESTAMP '2023-01-07 09:30:00', TIMESTAMP '2023-01-07 13:30:00', 3921676, 7);
+INSERT INTO waiting_list VALUES (TIMESTAMP '2023-01-08 10:30:00', TIMESTAMP '2023-01-08 14:30:00', 9142819354, 8);
+INSERT INTO waiting_list VALUES (TIMESTAMP '2023-01-09 11:30:00', TIMESTAMP '2023-01-09 15:30:00', 206715287, 9);
+INSERT INTO waiting_list VALUES (TIMESTAMP '2023-01-10 12:30:00', TIMESTAMP '2023-01-10 16:30:00', 0164302656, 10);
+
+-- Insert for clinicians_performing_operation table
+INSERT INTO clinicians_performing_operation VALUES (1, 1);
+INSERT INTO clinicians_performing_operation VALUES (2, 2);
+INSERT INTO clinicians_performing_operation VALUES (3, 3);
+INSERT INTO clinicians_performing_operation VALUES (4, 4);
+INSERT INTO clinicians_performing_operation VALUES (5, 5);
+INSERT INTO clinicians_performing_operation VALUES (6, 6);
+INSERT INTO clinicians_performing_operation VALUES (7, 7);
+INSERT INTO clinicians_performing_operation VALUES (8, 8);
+INSERT INTO clinicians_performing_operation VALUES (9, 9);
+INSERT INTO clinicians_performing_operation VALUES (10, 10);
