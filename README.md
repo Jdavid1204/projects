@@ -3,8 +3,47 @@
 
 
 This repository contains files used to develop each project.
+## Weather-APP
 
-### Blog-Portfolio
+### How to Run Project
+
+## Creating React Project
+
+Run command `npx create-react-app <"name of app">` <br>
+Unzip sourcefile and replace it with the source file in the created react app
+
+## Install Packages:
+
+Run in terminal (pointed at the folder with the react app)
+
+- `npm install <"package name">` (Packages use in the weather application (requiring install) are listed bellow).
+
+## Running Weather Application React Project:
+
+Run in terminal (pointed at the folder with the react app) `npm start` to start local host deployment
+
+# Project Information
+
+## External Packages Used In Weather Application
+
+For each run `npm install <"package name">`
+
+ - axios
+ - bootstrap
+ - leaflet
+ - react-bootstrap
+ - react-burger-menu
+ - react-icons
+ - react-leaflet
+
+## APIs Used In Weather Application
+
+- [GeoNames](https://www.geonames.org/)
+- [OpenWeather](https://openweathermap.org/)
+- [Unsplash](https://unsplash.com)
+
+
+## Blog-Portfolio
 
 Run locally using 'MAMP' which connected to a database created in 'phpMyAdmin'.
 
@@ -15,13 +54,13 @@ Home page: <br>
 
 
 
-### Platformer-Game
+## Platformer-Game
 Make sure that you have installed [Python3](https://www.python.org/download/), and 'Pygame' library downloaded. 
 ```console
 sudo apt install python3-dev
 python -m pip install -U pygame==2.5.2 --user
 ```
-### NHS-Table
+## NHS-Table
 
 Here's a breakdown of the purpose of each table and their relationships:
 
