@@ -1,8 +1,124 @@
 # Project
-
-
-
 This repository contains files used to develop each project.
+
+## Big Data Analytics Project
+
+This project demonstrates the power of distributed computing for analysing large-scale datasets across diverse domains, including urban transportation, blockchain networks, and streaming log data. Developed using PySpark and related technologies, it showcases advanced data processing, visualisation, and real-time streaming techniques.
+
+### Purpose
+The project was designed to:
+- Provide actionable insights from real-world datasets for urban planning, financial systems, and network analysis.
+- Demonstrate scalable solutions for handling multi-million-record datasets using distributed computing frameworks.
+- Apply advanced graph and streaming analytics for domain-specific challenges.
+
+### Key Technologies
+- **PySpark**: Distributed data processing.
+- **GraphFrames**: Graph-based analysis.
+- **Structured Streaming**: Real-time data processing.
+- **AWS S3**: Cloud-based storage.
+- **Matplotlib**: Data visualisation.
+
+---
+
+### Scripts
+
+#### `nyc_taxi_data_analysis.py`
+**Purpose**: Analyse NYC Yellow Taxi data to uncover tipping patterns, top routes, and borough-based insights.
+- Processed 22+ million records.
+- Calculated average tips per passenger and identified the top 10 routes based on tipping behavior.
+- Enriched data with geospatial information using joins.
+
+#### `ethereum_blockchain_analysis.py`
+**Purpose**: Examine Ethereum blockchain data to explore miner activity, transaction fees, and daily block trends.
+- Aggregated $1.2M+ in transaction fees for October 2015.
+- Ranked top 10 miners by total block size.
+- Performed date-based analyses for September and October transaction metrics.
+
+#### `green_taxi_graph_analysis.py`
+**Purpose**: Perform graph-based analysis on NYC Green Taxi data using GraphFrames.
+- Created a graph with 195 vertices (zones) and edges (trips).
+- Computed shortest paths and PageRank to evaluate network efficiency.
+- Analysed connected zones within boroughs and service areas.
+
+#### `nasa_log_streaming.py`
+**Purpose**: Stream and analyse NASA log data in real-time.
+- Implemented sliding windows for aggregating GIF requests with sub-3-second latency.
+- Aggregated total bytes transferred by hostname and counted successful GET requests.
+- Demonstrated the power of watermarking to handle late-arriving data efficiently.
+
+#### `blockchain_activity_histograms.py`
+**Purpose**: Visualise Ethereum blockchain activity.
+- Generated histograms for daily block counts and unique senders in September 2015.
+- Saved visualisations as PNG files for reporting.
+
+#### `transaction_fee_histograms.py`
+**Purpose**: Visualise transaction fees and block counts over time.
+- Created bar charts for October 2015 transaction fees and block counts.
+- Highlighted trends for blockchain metrics.
+
+## Installation and Usage
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Jdavid1204/projects/big-data-analytics
+   cd big-data-analytics
+   ```
+
+2. Set up a Python environment with required libraries:
+   ```bash
+   pip install pyspark matplotlib graphframes boto3
+   ```
+
+3. Configure AWS S3 credentials in your environment variables:
+   ```bash
+   export AWS_ACCESS_KEY_ID=your-access-key
+   export AWS_SECRET_ACCESS_KEY=your-secret-key
+   export DATA_REPOSITORY_BUCKET=your-s3-bucket
+   export S3_ENDPOINT_URL=your-s3-endpoint
+   export BUCKET_PORT=port
+   ```
+
+
+## Embedded Systems Projects
+### 1. Touch Sensor and LED Control (`touch_sensor_control.c`)
+- **Description**: Implements a real-time touch-sensitive system that dynamically controls LED brightness and color. Uses CMSIS-RTOS for multi-threaded operation with event-driven architecture.
+- **Features**:
+  - Reads touch positions and maps them to specific actions.
+  - Adjusts LED brightness incrementally based on touch regions.
+  - Integrates event flags to handle multiple touch states.
+- **Purpose**: Demonstrates multi-threading, event handling, and real-time user interaction.
+
+### 2. ADC-Based LED Control (`adc_led_control.c`)
+- **Description**: Utilises the ADC to measure voltage levels from two potentiometers (VR1 and VR2) and adjusts LED states accordingly. 
+- **Features**:
+  - Calibrates ADC for accurate measurements.
+  - Dynamically changes LED behavior based on real-time voltage inputs.
+  - Implements error handling for invalid input ranges.
+- **Purpose**: Highlights analog-to-digital conversion and real-time signal processing.
+
+### 3. PWM LED Brightness Control (`pwm_led_brightness.c`)
+- **Description**: Controls the brightness of RGB LEDs using Pulse-Width Modulation (PWM). Allows users to toggle between different brightness change rates and patterns.
+- **Features**:
+  - Two modes for brightness adjustment: fast and slow.
+  - Includes an additional LED pattern-switching feature (some functionality may require additional files).
+  - Demonstrates advanced timer usage for precise control.
+- **Purpose**: Demonstrates the use of PWM for efficient LED control and aesthetic pattern creation.
+
+### 4. Reaction Timer (`reaction_timer.c`)
+- **Description**: A reaction timing system that measures user response time with millisecond precision. 
+- **Features**:
+  - Waits for a random delay before triggering a "ready" state.
+  - Records reaction time with hardware timers.
+  - Includes error handling for early button presses.
+- **Purpose**: Demonstrates event-driven programming, state transitions, and timing accuracy.
+
+## Disclaimer
+
+- **Missing Files**: Some supporting files (e.g., `rgb.c`, `clock.c`) may not be included in this repository. You can replace or replicate these functionalities by creating additional `.c` files or adapting the code to your needs.
+- **Microcontroller Compatibility**: These projects are designed to run on the **FRDM-KL28Z board** using the **Keil µVision** IDE. Ensure all dependencies (e.g., CMSIS, board-specific drivers) are correctly set up in your development environment.
+- **Adaptation**: While the provided scripts focus on specific use cases, they can be extended or modified for other microcontrollers or embedded platforms.
+
+
 ## Weather-APP
 
 ### How to Run Project
