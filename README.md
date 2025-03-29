@@ -1,6 +1,37 @@
 # Project
 This repository contains files used to develop each project.
 
+
+## Hobbies Web App (Full-Stack Django + Vue Project)
+
+### 📌 Overview  
+A fully featured **single-page web application (SPA)** that connects users based on shared hobbies and mutual interests. The platform allows account creation, profile updates, hobby management, and friend request handling — all integrated with real-time user similarity filtering and dynamic frontend interactions.
+
+### 🎯 Purpose  
+- Connect users by comparing common hobbies and filtering by age.  
+- Showcase full-stack development proficiency using Django and Vue.  
+- Implement real-world features like authentication, CRUD APIs, and real-time updates.  
+- Ensure frontend-backend integration using secure session-based communication and fetch-based AJAX.
+
+### ✨ Key Features  
+- 🔒 **Authentication**: Sign-up, login, logout, and profile updates using Django’s secure auth system.  
+- 📊 **Similarity Algorithm**: Users ranked by shared hobbies and filtered by age using Django ORM annotations.  
+- 🤝 **Friend System**: Send, accept, and decline friend requests — reflected dynamically in UI.  
+- ⚙️ **SPA with Vue 3 + Pinia**: Responsive frontend with real-time state management and route-based navigation.  
+- 🧪 **Full Test Coverage**: Unit tests and **Selenium-based E2E tests** to validate UI interactions and flows.
+
+### 🧱 Technologies Used  
+- **Frontend**: Vue 3, Pinia, Vue Router, Vite, HTML, CSS  
+- **Backend**: Django 5.1, Django REST Framework  
+- **Testing**: Selenium, Django TestCase  
+- **Database**: PostgreSQL (with fallback to SQLite via `database.py`)  
+- **Dev Tools**: GitHub, VS Code, Python Virtualenv, Django Admin Panel  
+
+### 📦 Requirements Installation  
+```bash
+pip install -r requirements.txt
+
+
 ## Big Data Analytics Project
 
 This project demonstrates the power of distributed computing for analysing large-scale datasets across diverse domains, including urban transportation, blockchain networks, and streaming log data. Developed using PySpark and related technologies, it showcases advanced data processing, visualisation, and real-time streaming techniques.
@@ -79,44 +110,62 @@ The project was designed to:
    ```
 
 
-## Embedded Systems Projects
-### 1. Touch Sensor and LED Control (`touch_sensor_control.c`)
-- **Description**: Implements a real-time touch-sensitive system that dynamically controls LED brightness and color. Uses CMSIS-RTOS for multi-threaded operation with event-driven architecture.
-- **Features**:
-  - Reads touch positions and maps them to specific actions.
-  - Adjusts LED brightness incrementally based on touch regions.
-  - Integrates event flags to handle multiple touch states.
-- **Purpose**: Demonstrates multi-threading, event handling, and real-time user interaction.
+## 🔌 Embedded Systems Projects
 
-### 2. ADC-Based LED Control (`adc_led_control.c`)
-- **Description**: Utilises the ADC to measure voltage levels from two potentiometers (VR1 and VR2) and adjusts LED states accordingly. 
-- **Features**:
-  - Calibrates ADC for accurate measurements.
-  - Dynamically changes LED behavior based on real-time voltage inputs.
-  - Implements error handling for invalid input ranges.
-- **Purpose**: Highlights analog-to-digital conversion and real-time signal processing.
+This section showcases real-time embedded system applications developed for the **FRDM-KL28Z microcontroller board** using **Keil µVision** and **CMSIS** libraries. Each project demonstrates key concepts in embedded software design, such as multi-threading, analog signal processing, timing, and PWM control.
 
-### 3. PWM LED Brightness Control (`pwm_led_brightness.c`)
-- **Description**: Controls the brightness of RGB LEDs using Pulse-Width Modulation (PWM). Allows users to toggle between different brightness change rates and patterns.
-- **Features**:
-  - Two modes for brightness adjustment: fast and slow.
-  - Includes an additional LED pattern-switching feature (some functionality may require additional files).
-  - Demonstrates advanced timer usage for precise control.
-- **Purpose**: Demonstrates the use of PWM for efficient LED control and aesthetic pattern creation.
+---
 
-### 4. Reaction Timer (`reaction_timer.c`)
-- **Description**: A reaction timing system that measures user response time with millisecond precision. 
-- **Features**:
-  - Waits for a random delay before triggering a "ready" state.
-  - Records reaction time with hardware timers.
-  - Includes error handling for early button presses.
-- **Purpose**: Demonstrates event-driven programming, state transitions, and timing accuracy.
+### 1️⃣ Touch Sensor and LED Control – `touch_sensor_control.c`
 
-## Disclaimer
+- 📋 **Description**: Implements a real-time, touch-sensitive system that dynamically controls LED brightness and colour using **CMSIS-RTOS** with an event-driven architecture.
+- ⚙️ **Features**:
+  - Maps touch regions to LED actions.
+  - Incrementally adjusts LED brightness.
+  - Uses event flags to manage multi-touch input states.
+- 🎯 **Purpose**: Demonstrates multi-threading, touch input processing, and real-time event handling.
 
-- **Missing Files**: Some supporting files (e.g., `rgb.c`, `clock.c`) may not be included in this repository. You can replace or replicate these functionalities by creating additional `.c` files or adapting the code to your needs.
-- **Microcontroller Compatibility**: These projects are designed to run on the **FRDM-KL28Z board** using the **Keil µVision** IDE. Ensure all dependencies (e.g., CMSIS, board-specific drivers) are correctly set up in your development environment.
-- **Adaptation**: While the provided scripts focus on specific use cases, they can be extended or modified for other microcontrollers or embedded platforms.
+---
+
+### 2️⃣ ADC-Based LED Control – `adc_led_control.c`
+
+- 📋 **Description**: Utilises the **Analog-to-Digital Converter (ADC)** to measure voltages from two potentiometers and adjust LED states in real time.
+- ⚙️ **Features**:
+  - Accurate ADC calibration.
+  - Dynamic LED behaviour based on voltage input.
+  - Error handling for out-of-range inputs.
+- 🎯 **Purpose**: Highlights analog signal processing and real-time voltage-based control.
+
+---
+
+### 3️⃣ PWM LED Brightness Control – `pwm_led_brightness.c`
+
+- 📋 **Description**: Adjusts the brightness of RGB LEDs using **Pulse-Width Modulation (PWM)**, offering different modes for dynamic lighting effects.
+- ⚙️ **Features**:
+  - Toggle between fast and slow brightness transitions.
+  - LED pattern-switching (may require additional files).
+  - Fine-grained control using timers.
+- 🎯 **Purpose**: Demonstrates efficient LED modulation and advanced timer usage.
+
+---
+
+### 4️⃣ Reaction Timer – `reaction_timer.c`
+
+- 📋 **Description**: A precise reaction timing system that measures user response time using hardware timers.
+- ⚙️ **Features**:
+  - Waits for a random delay before starting.
+  - Measures reaction time to button press with millisecond precision.
+  - Handles invalid early presses with error feedback.
+- 🎯 **Purpose**: Showcases timing accuracy, user interaction, and finite state control logic.
+
+---
+
+### ⚠️ Disclaimer
+
+- 🧩 **Missing Files**: Some dependencies (e.g., `rgb.c`, `clock.c`) may not be included. These can be replicated or replaced with custom implementations.
+- 🧠 **Compatibility**: All projects are tailored for the **FRDM-KL28Z** board using **Keil µVision**. Ensure proper setup of CMSIS and board-specific drivers.
+- 🔧 **Adaptability**: Projects are modular and can be adapted to other ARM Cortex-M based platforms with minor adjustments.
+
 
 
 ## Weather-APP
