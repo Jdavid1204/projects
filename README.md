@@ -30,7 +30,7 @@ A fully featured **single-page web application (SPA)** that connects users based
 ### 📦 Requirements Installation  
 ```bash
 pip install -r requirements.txt
-
+```
 
 ## Big Data Analytics Project
 
@@ -108,6 +108,41 @@ The project was designed to:
    export S3_ENDPOINT_URL=your-s3-endpoint
    export BUCKET_PORT=port
    ```
+
+
+## Wellbeing App for FDM Employees
+
+### 📌 Overview  
+A full-stack cross-platform wellbeing application designed to support the physical and mental health of FDM employees. The app is available on both mobile and web platforms, featuring health tracking tools, educational content, appointment scheduling, and real-time messaging.
+
+### 🎯 Purpose  
+- Encourage healthier lifestyle habits through diet and exercise tracking.  
+- Provide educational resources on mental health, diet, and exercise.  
+- Enable real-time communication between employees and professionals.  
+- Allow users to schedule and manage wellbeing appointments.  
+- Foster self-improvement with a built-in to-do list and journaling.
+
+### ✨ Key Features  
+- 🍽️ **Diet Tracker**: Users can log daily calorie and protein intake with weekly summaries.  
+- 🏃 **Exercise Tracker**: Tracks daily steps and aggregates weekly activity.  
+- 🧠 **Mental Health Hub**: NHS-sourced articles on stress, anxiety, and depression.  
+- 🍏 **Diet Education**: Learn about calories, balanced diets, and healthy eating tips.  
+- 💪 **Exercise Articles**: Read about exercise benefits, risks of sitting, and physical activities.  
+- 📝 **To-Do List**: Personalized task management with completion tracking.  
+- 📅 **Appointments**: Users can book and view sessions with mental health professionals.  
+- 💬 **Live Chat**: WebSocket-powered real-time messaging with token-based authentication.  
+- 📱 **Cross-Platform UI**: Developed with **React Native** (mobile) and **React** (web).  
+- 🔐 **Authentication**: Token-based login and user sessions powered by Supabase and Django REST Framework.  
+
+### 🧱 Technologies Used  
+- **Frontend (Mobile)**: React Native, Expo, React Navigation  
+- **Frontend (Web)**: React  
+- **Backend**: Django, Django REST Framework  
+- **Database**: PostgreSQL  
+- **Authentication & Storage**: Supabase  
+- **Messaging**: Django Channels + WebSockets  
+- **APIs**: NHS content references, Django REST APIs  
+
 
 
 ## 🔌 Embedded Systems Projects
